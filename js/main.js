@@ -19,13 +19,22 @@ let theButtons = document.querySelectorAll("#buttonHolder img"),
 // functionality always goes in the middle -> how do we want
 // the app to behave?
 function changeBGImage() {
+	console.log('Drop Zone empty:', document.querySelector('.drop-zone img') === null);
+    if (document.querySelector('.drop-zone img') === null){
+		puzzleBoard.style.backgroundImage =`url(images/backGround${this.id}.jpg)`;
+	}
+
+
+
+
 	// the `` is a JavaScript template string. It tells the JS enging to evaluate the expression
 	// inside the braces - run that little bit of code. In this case it's just pulling the ID of the
 	// button we clicked on and putting it at the end of the image name (0, 1, 2, 3)
 	// and updating the background-image style of the puzzle board element.
 
 	// bug fix #2 should go here. it's at most 3 lines of JS code.
-	puzzleBoard.style.backgroundImage = `url(images/backGround${this.id}.jpg)`;
+
+	
 }
 
 function handleStartDrag() { 
@@ -41,14 +50,17 @@ function handleDragOver(event){
 	console.log('dragged over a zone');
 }   
 
+
+
+
 function handleDrop(event) {
+	console.log('handleDrop function called');
 	event.preventDefault();
-	console.log('dropped on the zone!');
-  // bug fix #1 should go here -should be about 3 lines of code
-	this.appendChild(draggedPiece);
+	console.log('dropped in the zone!');
+	if(!this.hasChildNodes() && !draggedPiece.parentNode.classList.contains('puzzle-board')) {
+		this.appendChild(draggedPiece);
+	}
 }
-
-
 // 1 to many event handling
 // add event handling to each button in the collection of buttons, one at a time
 theButtons.forEach(button => button.addEventListener("click", changeBGImage));
@@ -56,6 +68,7 @@ theButtons.forEach(button => button.addEventListener("click", changeBGImage));
 // add the drag event handling to the puzzle pieces
 puzzlePieces.forEach(piece => piece.addEventListener("dragstart", handleStartDrag));
 
-dropZones.forEach(zone=> zone.addEventListener('dragover', handleDragOver));
-
-dropZones.forEach(zone => zone.addEventListener('drop',handleDrop));
+dropZones.forEach(zone=> {
+	zone.addEventListener('dragover', handleDragOver);
+	zone.addEventListener('drop',handleDrop);
+});
