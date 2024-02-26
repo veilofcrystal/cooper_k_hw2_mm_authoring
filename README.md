@@ -1,5 +1,31 @@
 # cooper_k_hw2_mm_authoring
 Puzzle Build
+Crushing bugs plan
+
+Bug #1
+
+Plan step 1:
+     In java script write out code to make it so when a new piece is put into the drop zone the piece that is in the dropzone. -look for online resources through google.
+
+-update- struggling to find helpful resources. Now searching “how to make drag zone only accept one object in javascript”
+
+Plan Step 2: 
+	Ask Chat GPT for help. Feed it code that we’re working with and get solutions.
+Use solutions Chat GPT gave to make each drop zone only accept one piece.
+
+ Bug #2
+
+Plan Step 2:
+	Asked Chat GPT how to make a reset command in Javascript.
+
+Plan Step 3:
+	Added Javascript to reset puzzle pieces to their original position. Added “data-initial-position” tag with the div id to each puzzle piece in html so they went back to the “.puzzle-pieces” div every time the puzzle was reset.
+
+Plan step 4: Try to get the puzzle images to change to the respective images that matched each button’s background image. 
+
+Plan step 5: Created “buttonImageMap” with each respective piece per button in javascript.
+
+Plan step 6: Fixed background image javascript so it changed upon each click because it was delayed and needed to have the button be clicked twice to show the appropriate background image with the correct puzzle pieces.
 
 
 Assignment Requirements
